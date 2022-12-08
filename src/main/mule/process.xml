@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="08ba0132-29b4-4927-be14-87917f69f9bc" >
+		<http:listener-connection host="0.0.0.0" port="8082" />
+	</http:listener-config>
+	<http:request-config name="HTTP_Request_configuration" doc:name="HTTP Request configuration" doc:id="0c89bffc-82d9-4733-8d57-bbaf41b7c82a" >
+		<http:request-connection host="localhost" port="8081" />
+	</http:request-config>
+	<flow name="processFlow" doc:id="824050c9-0dd0-42f2-9abd-1e816c247699" >
+		<http:listener doc:name="Listener" doc:id="2901ce5e-b3a3-4323-81ef-0174bd7623bf" config-ref="HTTP_Listener_config" path="/virat"/>
+		<http:request method="GET" doc:name="Request" doc:id="3af9ca86-97d6-4be3-9c6e-960315e0e037" config-ref="HTTP_Request_configuration" path="/NAGOOR"/>
+	</flow>
+</mule>
